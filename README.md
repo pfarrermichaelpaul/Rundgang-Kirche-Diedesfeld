@@ -1,16 +1,6 @@
-# St. Remigius Diedesfeld – beide letzten Korrekturen gemeinsam
+# St. Remigius Diedesfeld – HQ-Finalfassung
 
-Diese Version enthält BEIDE Änderungen in einem Paket:
-
-- Empore:
-  - sauberes Panorama-JPG
-  - Startblick direkt auf die Orgel
-  - etwas weiterer Bildwinkel (95°)
-
-- Remigiusplatz:
-  - neues sauberes Panorama-JPG
-  - Startblick direkt auf die Bischofsfigur
-  - deutlich weiterer Bildwinkel (105°), damit die Ansicht nicht so nah wirkt
-
-Portal, Seitenmenü, Kirchenschiff, Chorraum, Hochaltar und die Multiresolution-Kacheln
-bleiben unverändert.
+Letzte gemeinsame Korrektur:
+- Empore: Original 031, 11904 × 5952 px, Start auf Orgel, weiter herausgezoomt (112°)
+- Remigiusplatz: Original 032, 11904 × 5952 px, Start auf Bischofsfigur, weiter herausgezoomt (118°)
+- Portal, Seitenmenü und übrige Panoramen unverändert
