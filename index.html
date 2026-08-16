@@ -41,8 +41,34 @@ box-shadow:0 5px 20px rgba(0,0,0,.42)}
 }
 .foot-hotspot:hover:before{font-size:38px}
 #error{display:none;position:fixed;z-index:100;inset:0;background:#fff;color:#222;padding:30px;font-size:18px}
+
+#tourMenu{
+  position:fixed;z-index:60;left:14px;top:50%;transform:translateY(-50%);
+  width:190px;background:rgba(0,0,0,.72);backdrop-filter:blur(5px);
+  border-radius:12px;padding:10px;box-shadow:0 5px 22px rgba(0,0,0,.38);
+}
+#tourMenu .menuTitle{color:#fff;font-weight:700;font-size:14px;padding:5px 7px 9px}
+#tourMenu button{
+  width:100%;display:block;margin:5px 0;padding:9px 10px;border:0;border-radius:8px;
+  background:rgba(255,255,255,.92);color:#222;text-align:left;font-size:13px;
+  font-weight:600;cursor:pointer;
+}
+#tourMenu button:hover{background:#fff}
+@media(max-width:700px){
+ #tourMenu{left:8px;top:auto;bottom:8px;transform:none;width:170px;max-height:55vh;overflow:auto}
+ #tourMenu button{padding:7px 8px;font-size:12px}
+}
 </style></head><body>
 <div id="panorama"></div>
+<div id="tourMenu" style="display:none">
+  <div class="menuTitle">Rundgang</div>
+  <button onclick="goScene('kirchenschiff')">Kirchenschiff</button>
+  <button onclick="goScene('chorraum')">Chorraum</button>
+  <button onclick="goScene('chorraum2')">Hochaltar</button>
+  <button onclick="goScene('empore')">Empore</button>
+  <button onclick="goScene('remigiusplatz')">Remigiusplatz</button>
+  <button onclick="showPortal()">Kirchenportal</button>
+
 <div class="top"><div class="badge">St. Remigius Diedesfeld · Virtueller Rundgang</div><button class="home" onclick="showPortal()">⌂ Portal</button></div>
 <div id="portal"><img src="Portal.jpg" alt="Portal St. Remigius Diedesfeld"><button id="enter" onclick="enterChurch()">👣 Kirche betreten</button></div>
 <div id="error"></div>
@@ -82,46 +108,28 @@ const viewer=pannellum.viewer('panorama',{
     title:'Kirchenschiff',
     type:'multires',
     multiRes:{"basePath":"tiles/kirchenschiff","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
-    yaw:0,pitch:0,hfov:92,
-    hotSpots:[
-      hs(-7,0,'Chorraum','chorraum'),
-      hs(20,180,'Empore','empore'),
-      hs(-12,180,'Remigiusplatz','remigiusplatz')
-    ]
+    yaw:0,pitch:0,hfov:92
   },
 
   chorraum:{
     title:'Chorraum',
     type:'multires',
     multiRes:{"basePath":"tiles/chorraum","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
-    yaw:0,pitch:0,hfov:90,
-    hotSpots:[
-      hs(-6,0,'Näher zum Hochaltar','chorraum2'),
-      hs(-10,180,'Kirchenschiff','kirchenschiff'),
-      hs(18,180,'Empore','empore'),
-      hs(-18,180,'Remigiusplatz','remigiusplatz')
-    ]
+    yaw:0,pitch:0,hfov:90
   },
 
   chorraum2:{
     title:'Chorraum · Hochaltar',
     type:'multires',
     multiRes:{"basePath":"tiles/chorraum2","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
-    yaw:0,pitch:0,hfov:86,
-    hotSpots:[
-      hs(-10,180,'Kirchenschiff','kirchenschiff'),
-      hs(18,180,'Empore','empore')
-    ]
+    yaw:0,pitch:0,hfov:86
   },
 
   empore:{
     title:'Empore',
     type:'equirectangular',
     panorama:'Empore.jpg',
-    yaw:0,pitch:0,hfov:82,
-    hotSpots:[
-      hs(-10,180,'Zurück ins Kirchenschiff','kirchenschiff')
-    ]
+    yaw:0,pitch:0,hfov:82
   },
 
   remigiusplatz:{
@@ -129,18 +137,20 @@ const viewer=pannellum.viewer('panorama',{
     type:'equirectangular',
     panorama:'Remigiusplatz.jpg',
     yaw:0,pitch:0,hfov:82,
-    hotSpots:[
-      hs(-7,180,'Zurück in die Kirche','kirchenschiff')
-    ]
   }
  }
 });
 
-function enterChurch(){
+function goScene(sceneId){
   document.getElementById('portal').style.display='none';
-  viewer.loadScene('kirchenschiff');
+  document.getElementById('tourMenu').style.display='block';
+  viewer.loadScene(sceneId);
+}
+function enterChurch(){
+  goScene('kirchenschiff');
 }
 function showPortal(){
   document.getElementById('portal').style.display='flex';
+  document.getElementById('tourMenu').style.display='none';
 }
 </script></body></html>
