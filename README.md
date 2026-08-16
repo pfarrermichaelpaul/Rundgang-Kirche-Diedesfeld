@@ -1,9 +1,15 @@
-# St. Remigius Diedesfeld – endgültige HQ-Fassung
+# St. Remigius Diedesfeld – HQ Multiresolution Endfassung
 
-- Empore: korrekt gestitchter Insta360-Export 11904 × 5952, unverändert übernommen
-  - Start: Orgel mittig
-  - weiter Startwinkel: 112°
-- Remigiusplatz: korrekt gestitchter Insta360-Export 11904 × 5952, unverändert übernommen
-  - Start: Bischofsfigur mittig
-  - weiter Startwinkel: 118°
-- Portal, Seitenmenü und alle übrigen Rundgangsbilder bleiben aus der funktionierenden Fassung erhalten.
+Korrektur der beiden letzten Problemstationen:
+
+- Empore: korrekt gestitchter 11904 × 5952 Export als Multiresolution-Kacheln
+  - dadurch keine WebGL-Überlappungs-/Texturfehler
+  - Startblick: Orgel mittig
+  - Startwinkel: 112°
+
+- Remigiusplatz: korrekt gestitchter 11904 × 5952 Export als Multiresolution-Kacheln
+  - dadurch volle Qualität ohne riesige Einzeltextur
+  - Startblick: Bischofsfigur / Brunnen mittig
+  - Startwinkel: 118°
+
+Portal, Seitenmenü, Kirchenschiff, Chorraum und Hochaltar bleiben erhalten.
