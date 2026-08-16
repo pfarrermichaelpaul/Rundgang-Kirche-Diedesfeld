@@ -1,11 +1,11 @@
-# St. Remigius Diedesfeld – perfekte Endfassung
+# St. Remigius Diedesfeld – finale saubere Fassung
 
-- Start: echtes Kirchenportal mit „Kirche betreten“
-- Danach dauerhaftes Seitenmenü
-- Keine Hotspots / Buttons in den Panoramen
-- Kirchenschiff: Startansicht um 180° gedreht
-- Chorraum: Startansicht um 180° gedreht
-- Hochaltar: Startansicht um 180° gedreht
-- Empore: neues Originalpanorama, Startansicht um 180° gedreht
-- Remigiusplatz: neues Originalpanorama, Startansicht um 180° gedreht
-- Ausschließlich Originalaufnahmen von St. Remigius Diedesfeld
+- Kirchenportal als Startbild mit „Kirche betreten“
+- Festes Seitenmenü
+- Keine Hotspots in den Panoramen
+- Kirchenschiff: Startblick zum Altar
+- Chorraum: gewünschte um 180° gedrehte Startansicht
+- Hochaltar: gewünschte um 180° gedrehte Startansicht
+- Empore: NEUES sauber exportiertes Originalpanorama; Startblick direkt auf die Orgel
+- Remigiusplatz: NEUES sauber exportiertes Originalpanorama; Startblick direkt auf die Bischofsfigur
+- Keine .insp-Dateien als Panorama verwendet; dadurch keine Fischaugen-/Überlappungsfehler
