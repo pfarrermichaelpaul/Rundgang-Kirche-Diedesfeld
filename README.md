@@ -1,11 +1,5 @@
-# St. Remigius Diedesfeld – HQ-Web-Rundgang
+# St. Remigius Diedesfeld – Multiresolution 360°-Rundgang
 
-Diese Fassung verwendet für die drei neu aufgenommenen Panoramen webtaugliche HQ-Dateien:
-- Kirchenschiff: 6144 × 3072
-- Chorraum: 6144 × 3072
-- Chorraum 2 / Hochaltar: 6144 × 3072
+Diese Fassung verwendet Pannellum-Multiresolution-Kacheln für Kirchenschiff, Chorraum und Chorraum 2. Beim Zoomen werden hochauflösende Kacheln nachgeladen; große Panoramen müssen nicht als eine einzelne WebGL-Textur geladen werden.
 
-Die Bilder wurden nicht künstlich nachgeschärft. Sie wurden aus den hochauflösenden
-11904 × 5952-Panoramen sauber auf eine WebGL-taugliche Größe skaliert.
-
-Navigation einschließlich „Näher zum Hochaltar“ ist enthalten.
+Für GitHub Pages: gesamten Inhalt dieses Ordners in das Repository-Root kopieren, committen und pushen.
