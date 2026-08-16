@@ -150,18 +150,24 @@ const viewer = pannellum.viewer('panorama', {
   }
 });
 
-function enterChurch(){
-  document.getElementById('portal').style.display='none';
-  document.getElementById('tourMenu').style.display='block';
-  document.getElementById('topbar').style.display='flex';
-  viewer.loadScene('kirchenschiff');
-}
+const startView={
+  kirchenschiff:{pitch:0,yaw:180,hfov:92},
+  chorraum:{pitch:0,yaw:180,hfov:90},
+  chorraum2:{pitch:0,yaw:180,hfov:86},
+  empore:{pitch:0,yaw:0,hfov:82},
+  remigiusplatz:{pitch:0,yaw:0,hfov:82}
+};
 
 function goScene(id){
   document.getElementById('portal').style.display='none';
   document.getElementById('tourMenu').style.display='block';
   document.getElementById('topbar').style.display='flex';
-  viewer.loadScene(id);
+  const v=startView[id];
+  viewer.loadScene(id,v.pitch,v.yaw,v.hfov);
+}
+
+function enterChurch(){
+  goScene('kirchenschiff');
 }
 
 function showPortal(){

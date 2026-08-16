@@ -1,11 +1,13 @@
-# St. Remigius Diedesfeld – finale saubere Fassung
+# St. Remigius Diedesfeld – Startblick-Fix
 
-- Kirchenportal als Startbild mit „Kirche betreten“
-- Festes Seitenmenü
-- Keine Hotspots in den Panoramen
-- Kirchenschiff: Startblick zum Altar
-- Chorraum: gewünschte um 180° gedrehte Startansicht
-- Hochaltar: gewünschte um 180° gedrehte Startansicht
-- Empore: NEUES sauber exportiertes Originalpanorama; Startblick direkt auf die Orgel
-- Remigiusplatz: NEUES sauber exportiertes Originalpanorama; Startblick direkt auf die Bischofsfigur
-- Keine .insp-Dateien als Panorama verwendet; dadurch keine Fischaugen-/Überlappungsfehler
+Wichtigste Korrektur:
+Beim Wechsel über das Seitenmenü wird die Startposition nun ausdrücklich gesetzt.
+Damit übernimmt Pannellum nicht mehr die Blickrichtung der vorherigen Station.
+
+- Kirchenschiff: 180°
+- Chorraum: 180°
+- Hochaltar: 180°
+- Empore: 0° → Orgel mittig
+- Remigiusplatz: 0° → Bischofsfigur mittig
+
+Portal, Seitenmenü und Bilder bleiben unverändert.
