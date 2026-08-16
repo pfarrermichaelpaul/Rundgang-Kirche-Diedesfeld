@@ -1,5 +1,15 @@
-# St. Remigius Diedesfeld – Multiresolution 360°-Rundgang
+# St. Remigius Diedesfeld – korrigierter Panorama-Rundgang
 
-Diese Fassung verwendet Pannellum-Multiresolution-Kacheln für Kirchenschiff, Chorraum und Chorraum 2. Beim Zoomen werden hochauflösende Kacheln nachgeladen; große Panoramen müssen nicht als eine einzelne WebGL-Textur geladen werden.
+Diese Fassung verwendet ausschließlich die echten Aufnahmen von St. Remigius.
 
-Für GitHub Pages: gesamten Inhalt dieses Ordners in das Repository-Root kopieren, committen und pushen.
+Navigation:
+- Portal → Kirchenschiff
+- Kirchenschiff: vorne nur „Chorraum“
+- Kirchenschiff nach hinten: „Empore“ oben an der Orgel, „Remigiusplatz“ unten am Ausgang
+- Chorraum: „Näher zum Hochaltar“; nach hinten Kirchenschiff, Empore und Remigiusplatz
+- Chorraum · Hochaltar: Kirchenschiff und Empore
+- Empore: Kirchenschiff
+- Remigiusplatz: Zurück in die Kirche
+
+Die Navigationspunkte werden als Fußspuren mit dauerhaft sichtbarer Beschriftung dargestellt.
+Die hochauflösende Multiresolution-Qualität von Kirchenschiff, Chorraum und Chorraum 2 bleibt erhalten.

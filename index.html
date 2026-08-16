@@ -7,16 +7,39 @@
 html,body,#panorama{width:100%;height:100%;margin:0;background:#111;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
 #portal{position:fixed;inset:0;z-index:50;background:#111;display:flex;align-items:center;justify-content:center}
 #portal img{width:100%;height:100%;object-fit:contain}
-#enter{position:absolute;left:50%;top:68%;transform:translate(-50%,-50%);border:0;border-radius:999px;background:rgba(0,0,0,.76);color:#fff;padding:14px 21px;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 5px 20px #0006}
+#enter{position:absolute;left:50%;top:68%;transform:translate(-50%,-50%);border:0;border-radius:999px;
+background:rgba(0,0,0,.76);color:#fff;padding:14px 21px;font-size:17px;font-weight:700;cursor:pointer;
+box-shadow:0 5px 20px rgba(0,0,0,.42)}
 #enter:hover{transform:translate(-50%,-50%) scale(1.05)}
 .top{position:fixed;z-index:40;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;pointer-events:none}
-.badge,.home{background:#0009;color:#fff;border-radius:10px;padding:9px 12px;font-size:14px}
+.badge,.home{background:rgba(0,0,0,.62);color:#fff;border-radius:10px;padding:9px 12px;font-size:14px}
 .home{border:0;pointer-events:auto;cursor:pointer}
 .pnlm-title-box{background:rgba(0,0,0,.55)!important}
-.pnlm-hotspot-base{cursor:pointer}
-.pnlm-scene .pnlm-hotspot-base:after{content:'👣';font-size:22px;position:absolute;inset:0;display:grid;place-items:center}
-.pnlm-scene{background:rgba(0,0,0,.78)!important;border-radius:50%;width:48px!important;height:48px!important}
-.pnlm-tooltip span{font-size:13px!important}
+.pnlm-tooltip{display:none!important}
+
+/* Echte Fußspuren statt Pannellum-Kreis */
+.foot-hotspot{
+  width:54px!important;height:54px!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;border-radius:0!important;
+  box-shadow:none!important;
+  cursor:pointer!important;
+}
+.foot-hotspot:before{
+  content:'👣';
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-size:34px;line-height:1;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.75));
+}
+.foot-hotspot .foot-label{
+  position:absolute;left:50%;top:51px;transform:translateX(-50%);
+  white-space:nowrap;background:rgba(0,0,0,.82);color:#fff;
+  padding:5px 9px;border-radius:7px;font-size:13px;font-weight:700;
+  box-shadow:0 2px 8px rgba(0,0,0,.35);pointer-events:none;
+}
+.foot-hotspot:hover:before{font-size:38px}
 #error{display:none;position:fixed;z-index:100;inset:0;background:#fff;color:#222;padding:30px;font-size:18px}
 </style></head><body>
 <div id="panorama"></div>
@@ -24,29 +47,100 @@ html,body,#panorama{width:100%;height:100%;margin:0;background:#111;overflow:hid
 <div id="portal"><img src="Portal.jpg" alt="Portal St. Remigius Diedesfeld"><button id="enter" onclick="enterChurch()">👣 Kirche betreten</button></div>
 <div id="error"></div>
 <script>
-if(typeof pannellum==='undefined'){document.getElementById('error').style.display='block';document.getElementById('error').innerHTML='<b>Der 360°-Viewer konnte nicht geladen werden.</b><br><br>Bitte Internetverbindung prüfen und die Seite neu laden.';}
+if(typeof pannellum==='undefined'){
+  document.getElementById('error').style.display='block';
+  document.getElementById('error').innerHTML='<b>Der 360°-Viewer konnte nicht geladen werden.</b><br><br>Bitte Internetverbindung prüfen und die Seite neu laden.';
+}
+
+function footHotspot(div,args){
+  div.classList.add('foot-hotspot');
+  const label=document.createElement('div');
+  label.className='foot-label';
+  label.textContent=args.label;
+  div.appendChild(label);
+}
+function hs(pitch,yaw,label,sceneId){
+  return {
+    pitch:pitch,yaw:yaw,type:'scene',sceneId:sceneId,
+    cssClass:'foot-hotspot',
+    createTooltipFunc:footHotspot,
+    createTooltipArgs:{label:label}
+  };
+}
+
 const viewer=pannellum.viewer('panorama',{
- default:{firstScene:'kirchenschiff',autoLoad:true,sceneFadeDuration:500,showControls:true,compass:false,hfov:92},
+ default:{
+   firstScene:'kirchenschiff',
+   autoLoad:true,
+   sceneFadeDuration:500,
+   showControls:true,
+   compass:false,
+   hfov:92
+ },
  scenes:{
-  kirchenschiff:{title:'Kirchenschiff',type:'multires',multiRes:{"basePath": "tiles/kirchenschiff", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3784},yaw:0,pitch:0,hotSpots:[
-   {pitch:-7,yaw:0,type:'scene',text:'Chorraum',sceneId:'chorraum'},
-   {pitch:22,yaw:180,type:'scene',text:'Empore',sceneId:'empore'},
-   {pitch:-13,yaw:180,type:'scene',text:'Remigiusplatz',sceneId:'remigiusplatz'}]},
-  chorraum:{title:'Chorraum',type:'multires',multiRes:{"basePath": "tiles/chorraum", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3784},yaw:0,pitch:0,hotSpots:[
-   {pitch:-18,yaw:0,type:'scene',text:'Kirchenschiff',sceneId:'kirchenschiff'},
-   {pitch:12,yaw:0,type:'scene',text:'Empore',sceneId:'empore'},
-   {pitch:-3,yaw:0,type:'scene',text:'Remigiusplatz',sceneId:'remigiusplatz'},
-   {pitch:-7,yaw:180,type:'scene',text:'Näher zum Hochaltar',sceneId:'chorraum2'}]},
-  chorraum2:{title:'Chorraum · Hochaltar',type:'multires',multiRes:{"basePath": "tiles/chorraum2", "path": "/%l/%s%y_%x", "fallbackPath": "/fallback/%s", "extension": "jpg", "tileResolution": 512, "maxLevel": 4, "cubeResolution": 3784},yaw:180,pitch:0,hfov:88,hotSpots:[
-   {pitch:-10,yaw:0,type:'scene',text:'Kirchenschiff',sceneId:'kirchenschiff'},
-   {pitch:8,yaw:0,type:'scene',text:'Empore',sceneId:'empore'}]},
-  empore:{title:'Empore',type:'equirectangular',panorama:'Empore.jpg',yaw:180,pitch:0,hfov:90,hotSpots:[
-   {pitch:-12,yaw:180,type:'scene',text:'Kirchenschiff',sceneId:'kirchenschiff'},
-   {pitch:-4,yaw:180,type:'scene',text:'Chorraum',sceneId:'chorraum'}]},
-  remigiusplatz:{title:'Remigiusplatz',type:'equirectangular',panorama:'Remigiusplatz.jpg',yaw:-145,pitch:0,hfov:92,hotSpots:[
-   {pitch:-5,yaw:-145,type:'scene',text:'Zurück in die Kirche',sceneId:'kirchenschiff'}]}
+  kirchenschiff:{
+    title:'Kirchenschiff',
+    type:'multires',
+    multiRes:{"basePath":"tiles/kirchenschiff","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
+    yaw:0,pitch:0,hfov:92,
+    hotSpots:[
+      hs(-7,0,'Chorraum','chorraum'),
+      hs(20,180,'Empore','empore'),
+      hs(-12,180,'Remigiusplatz','remigiusplatz')
+    ]
+  },
+
+  chorraum:{
+    title:'Chorraum',
+    type:'multires',
+    multiRes:{"basePath":"tiles/chorraum","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
+    yaw:0,pitch:0,hfov:90,
+    hotSpots:[
+      hs(-6,0,'Näher zum Hochaltar','chorraum2'),
+      hs(-10,180,'Kirchenschiff','kirchenschiff'),
+      hs(18,180,'Empore','empore'),
+      hs(-18,180,'Remigiusplatz','remigiusplatz')
+    ]
+  },
+
+  chorraum2:{
+    title:'Chorraum · Hochaltar',
+    type:'multires',
+    multiRes:{"basePath":"tiles/chorraum2","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
+    yaw:0,pitch:0,hfov:86,
+    hotSpots:[
+      hs(-10,180,'Kirchenschiff','kirchenschiff'),
+      hs(18,180,'Empore','empore')
+    ]
+  },
+
+  empore:{
+    title:'Empore',
+    type:'equirectangular',
+    panorama:'Empore.jpg',
+    yaw:180,pitch:0,hfov:82,
+    hotSpots:[
+      hs(-10,180,'Kirchenschiff','kirchenschiff')
+    ]
+  },
+
+  remigiusplatz:{
+    title:'Remigiusplatz',
+    type:'equirectangular',
+    panorama:'Remigiusplatz.jpg',
+    yaw:-145,pitch:0,hfov:80,
+    hotSpots:[
+      hs(-7,-145,'Zurück in die Kirche','kirchenschiff')
+    ]
+  }
  }
 });
-function enterChurch(){document.getElementById('portal').style.display='none';viewer.loadScene('kirchenschiff');}
-function showPortal(){document.getElementById('portal').style.display='flex';}
+
+function enterChurch(){
+  document.getElementById('portal').style.display='none';
+  viewer.loadScene('kirchenschiff');
+}
+function showPortal(){
+  document.getElementById('portal').style.display='flex';
+}
 </script></body></html>
