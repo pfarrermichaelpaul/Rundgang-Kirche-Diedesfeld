@@ -1,14 +1,8 @@
-# St. Remigius Diedesfeld – Version mit Seitenmenü
+# St. Remigius Diedesfeld – korrigierte Menü-Version
 
-Alle Hotspots / Buttons wurden aus den Panoramabildern entfernt.
-
-Auf jeder Station erscheint stattdessen links ein festes Menü:
-- Kirchenschiff
-- Chorraum
-- Hochaltar
-- Empore
-- Remigiusplatz
-- Kirchenportal
-
-Der Remigiusplatz wurde durch die neu hochgeladene 11904 × 5952-Aufnahme ersetzt.
-Die bestehende hohe Panoramaqualität der übrigen Stationen bleibt erhalten.
+Korrigiert:
+- Kirchenportal ist wieder das Startbild.
+- Button „Kirche betreten“ führt ins Kirchenschiff.
+- Links erscheint danach dauerhaft das Seitenmenü.
+- Keine Hotspots / Buttons mehr direkt in den Panoramen.
+- Menü: Kirchenschiff, Chorraum, Hochaltar, Empore, Remigiusplatz, Kirchenportal.

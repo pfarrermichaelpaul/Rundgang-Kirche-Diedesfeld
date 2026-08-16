@@ -1,156 +1,175 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Virtueller Rundgang – St. Remigius Diedesfeld</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
 <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
 <style>
-html,body,#panorama{width:100%;height:100%;margin:0;background:#111;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
-#portal{position:fixed;inset:0;z-index:50;background:#111;display:flex;align-items:center;justify-content:center}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;font-family:Arial,Helvetica,sans-serif}
+#panorama{position:fixed;inset:0;background:#111}
+#portal{
+  position:fixed;inset:0;z-index:100;background:#111;
+  display:flex;align-items:center;justify-content:center
+}
 #portal img{width:100%;height:100%;object-fit:contain}
-#enter{position:absolute;left:50%;top:68%;transform:translate(-50%,-50%);border:0;border-radius:999px;
-background:rgba(0,0,0,.76);color:#fff;padding:14px 21px;font-size:17px;font-weight:700;cursor:pointer;
-box-shadow:0 5px 20px rgba(0,0,0,.42)}
+#enter{
+  position:absolute;left:50%;top:68%;transform:translate(-50%,-50%);
+  border:0;border-radius:999px;padding:14px 22px;
+  background:rgba(0,0,0,.76);color:white;font-size:17px;font-weight:700;
+  cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.4)
+}
 #enter:hover{transform:translate(-50%,-50%) scale(1.05)}
-.top{position:fixed;z-index:40;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;pointer-events:none}
-.badge,.home{background:rgba(0,0,0,.62);color:#fff;border-radius:10px;padding:9px 12px;font-size:14px}
-.home{border:0;pointer-events:auto;cursor:pointer}
-.pnlm-title-box{background:rgba(0,0,0,.55)!important}
-.pnlm-tooltip{display:none!important}
-
-/* Echte Fußspuren statt Pannellum-Kreis */
-.foot-hotspot{
-  width:54px!important;height:54px!important;
-  background:transparent!important;
-  background-image:none!important;
-  border:0!important;border-radius:0!important;
-  box-shadow:none!important;
-  cursor:pointer!important;
-}
-.foot-hotspot:before{
-  content:'👣';
-  position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  font-size:34px;line-height:1;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.75));
-}
-.foot-hotspot .foot-label{
-  position:absolute;left:50%;top:51px;transform:translateX(-50%);
-  white-space:nowrap;background:rgba(0,0,0,.82);color:#fff;
-  padding:5px 9px;border-radius:7px;font-size:13px;font-weight:700;
-  box-shadow:0 2px 8px rgba(0,0,0,.35);pointer-events:none;
-}
-.foot-hotspot:hover:before{font-size:38px}
-#error{display:none;position:fixed;z-index:100;inset:0;background:#fff;color:#222;padding:30px;font-size:18px}
 
 #tourMenu{
-  position:fixed;z-index:60;left:14px;top:50%;transform:translateY(-50%);
-  width:190px;background:rgba(0,0,0,.72);backdrop-filter:blur(5px);
-  border-radius:12px;padding:10px;box-shadow:0 5px 22px rgba(0,0,0,.38);
+  position:fixed;left:16px;top:50%;transform:translateY(-50%);
+  z-index:90;width:190px;padding:10px;border-radius:14px;
+  background:rgba(0,0,0,.72);backdrop-filter:blur(6px);
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+  display:none;
 }
-#tourMenu .menuTitle{color:#fff;font-weight:700;font-size:14px;padding:5px 7px 9px}
+#tourMenu .title{
+  color:white;font-weight:700;font-size:14px;padding:5px 7px 8px
+}
 #tourMenu button{
-  width:100%;display:block;margin:5px 0;padding:9px 10px;border:0;border-radius:8px;
-  background:rgba(255,255,255,.92);color:#222;text-align:left;font-size:13px;
-  font-weight:600;cursor:pointer;
+  width:100%;display:block;margin:5px 0;padding:10px 11px;
+  border:0;border-radius:9px;background:rgba(255,255,255,.94);
+  color:#222;font-size:13px;font-weight:600;text-align:left;cursor:pointer
 }
-#tourMenu button:hover{background:#fff}
+#tourMenu button:hover{background:white}
+
+#topbar{
+  position:fixed;left:12px;right:12px;top:12px;z-index:80;
+  display:none;justify-content:flex-end;pointer-events:none
+}
+#topbar button{
+  pointer-events:auto;border:0;border-radius:9px;padding:8px 11px;
+  background:rgba(0,0,0,.60);color:white;cursor:pointer
+}
 @media(max-width:700px){
- #tourMenu{left:8px;top:auto;bottom:8px;transform:none;width:170px;max-height:55vh;overflow:auto}
- #tourMenu button{padding:7px 8px;font-size:12px}
+  #tourMenu{
+    left:8px;top:auto;bottom:8px;transform:none;width:168px;
+    max-height:56vh;overflow:auto
+  }
+  #tourMenu button{padding:8px 9px;font-size:12px}
 }
-</style></head><body>
+</style>
+</head>
+<body>
+
 <div id="panorama"></div>
-<div id="tourMenu" style="display:none">
-  <div class="menuTitle">Rundgang</div>
+
+<div id="tourMenu">
+  <div class="title">Rundgang</div>
   <button onclick="goScene('kirchenschiff')">Kirchenschiff</button>
   <button onclick="goScene('chorraum')">Chorraum</button>
   <button onclick="goScene('chorraum2')">Hochaltar</button>
   <button onclick="goScene('empore')">Empore</button>
   <button onclick="goScene('remigiusplatz')">Remigiusplatz</button>
   <button onclick="showPortal()">Kirchenportal</button>
+</div>
 
-<div class="top"><div class="badge">St. Remigius Diedesfeld · Virtueller Rundgang</div><button class="home" onclick="showPortal()">⌂ Portal</button></div>
-<div id="portal"><img src="Portal.jpg" alt="Portal St. Remigius Diedesfeld"><button id="enter" onclick="enterChurch()">👣 Kirche betreten</button></div>
-<div id="error"></div>
+<div id="topbar">
+  <button onclick="showPortal()">⌂ Portal</button>
+</div>
+
+<div id="portal">
+  <img src="Portal.jpg" alt="Kirchenportal St. Remigius Diedesfeld">
+  <button id="enter" onclick="enterChurch()">👣 Kirche betreten</button>
+</div>
+
 <script>
-if(typeof pannellum==='undefined'){
-  document.getElementById('error').style.display='block';
-  document.getElementById('error').innerHTML='<b>Der 360°-Viewer konnte nicht geladen werden.</b><br><br>Bitte Internetverbindung prüfen und die Seite neu laden.';
-}
-
-function footHotspot(div,args){
-  div.classList.add('foot-hotspot');
-  const label=document.createElement('div');
-  label.className='foot-label';
-  label.textContent=args.label;
-  div.appendChild(label);
-}
-function hs(pitch,yaw,label,sceneId){
-  return {
-    pitch:pitch,yaw:yaw,type:'scene',sceneId:sceneId,
-    cssClass:'foot-hotspot',
-    createTooltipFunc:footHotspot,
-    createTooltipArgs:{label:label}
-  };
-}
-
-const viewer=pannellum.viewer('panorama',{
- default:{
-   firstScene:'kirchenschiff',
-   autoLoad:true,
-   sceneFadeDuration:500,
-   showControls:true,
-   compass:false,
-   hfov:92
- },
- scenes:{
-  kirchenschiff:{
-    title:'Kirchenschiff',
-    type:'multires',
-    multiRes:{"basePath":"tiles/kirchenschiff","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
-    yaw:0,pitch:0,hfov:92
+const viewer = pannellum.viewer('panorama', {
+  default: {
+    firstScene: 'kirchenschiff',
+    autoLoad: true,
+    sceneFadeDuration: 450,
+    showControls: true,
+    compass: false
   },
+  scenes: {
+    kirchenschiff: {
+      title: 'Kirchenschiff',
+      type: 'multires',
+      multiRes: {
+        basePath: 'tiles/kirchenschiff',
+        path: '/%l/%s%y_%x',
+        fallbackPath: '/fallback/%s',
+        extension: 'jpg',
+        tileResolution: 512,
+        maxLevel: 4,
+        cubeResolution: 3784
+      },
+      yaw: 0, pitch: 0, hfov: 92
+    },
 
-  chorraum:{
-    title:'Chorraum',
-    type:'multires',
-    multiRes:{"basePath":"tiles/chorraum","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
-    yaw:0,pitch:0,hfov:90
-  },
+    chorraum: {
+      title: 'Chorraum',
+      type: 'multires',
+      multiRes: {
+        basePath: 'tiles/chorraum',
+        path: '/%l/%s%y_%x',
+        fallbackPath: '/fallback/%s',
+        extension: 'jpg',
+        tileResolution: 512,
+        maxLevel: 4,
+        cubeResolution: 3784
+      },
+      yaw: 0, pitch: 0, hfov: 90
+    },
 
-  chorraum2:{
-    title:'Chorraum · Hochaltar',
-    type:'multires',
-    multiRes:{"basePath":"tiles/chorraum2","path":"/%l/%s%y_%x","fallbackPath":"/fallback/%s","extension":"jpg","tileResolution":512,"maxLevel":4,"cubeResolution":3784},
-    yaw:0,pitch:0,hfov:86
-  },
+    chorraum2: {
+      title: 'Chorraum · Hochaltar',
+      type: 'multires',
+      multiRes: {
+        basePath: 'tiles/chorraum2',
+        path: '/%l/%s%y_%x',
+        fallbackPath: '/fallback/%s',
+        extension: 'jpg',
+        tileResolution: 512,
+        maxLevel: 4,
+        cubeResolution: 3784
+      },
+      yaw: 0, pitch: 0, hfov: 86
+    },
 
-  empore:{
-    title:'Empore',
-    type:'equirectangular',
-    panorama:'Empore.jpg',
-    yaw:0,pitch:0,hfov:82
-  },
+    empore: {
+      title: 'Empore',
+      type: 'equirectangular',
+      panorama: 'Empore.jpg',
+      yaw: 0, pitch: 0, hfov: 82
+    },
 
-  remigiusplatz:{
-    title:'Remigiusplatz',
-    type:'equirectangular',
-    panorama:'Remigiusplatz.jpg',
-    yaw:0,pitch:0,hfov:82,
+    remigiusplatz: {
+      title: 'Remigiusplatz',
+      type: 'equirectangular',
+      panorama: 'Remigiusplatz.jpg',
+      yaw: 0, pitch: 0, hfov: 82
+    }
   }
- }
 });
 
-function goScene(sceneId){
+function enterChurch(){
   document.getElementById('portal').style.display='none';
   document.getElementById('tourMenu').style.display='block';
-  viewer.loadScene(sceneId);
+  document.getElementById('topbar').style.display='flex';
+  viewer.loadScene('kirchenschiff');
 }
-function enterChurch(){
-  goScene('kirchenschiff');
+
+function goScene(id){
+  document.getElementById('portal').style.display='none';
+  document.getElementById('tourMenu').style.display='block';
+  document.getElementById('topbar').style.display='flex';
+  viewer.loadScene(id);
 }
+
 function showPortal(){
   document.getElementById('portal').style.display='flex';
   document.getElementById('tourMenu').style.display='none';
+  document.getElementById('topbar').style.display='none';
 }
-</script></body></html>
+</script>
+
+</body>
+</html>
