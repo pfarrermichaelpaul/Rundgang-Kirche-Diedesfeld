@@ -1,6 +1,9 @@
-# St. Remigius Diedesfeld – HQ-Finalfassung
+# St. Remigius Diedesfeld – endgültige HQ-Fassung
 
-Letzte gemeinsame Korrektur:
-- Empore: Original 031, 11904 × 5952 px, Start auf Orgel, weiter herausgezoomt (112°)
-- Remigiusplatz: Original 032, 11904 × 5952 px, Start auf Bischofsfigur, weiter herausgezoomt (118°)
-- Portal, Seitenmenü und übrige Panoramen unverändert
+- Empore: korrekt gestitchter Insta360-Export 11904 × 5952, unverändert übernommen
+  - Start: Orgel mittig
+  - weiter Startwinkel: 112°
+- Remigiusplatz: korrekt gestitchter Insta360-Export 11904 × 5952, unverändert übernommen
+  - Start: Bischofsfigur mittig
+  - weiter Startwinkel: 118°
+- Portal, Seitenmenü und alle übrigen Rundgangsbilder bleiben aus der funktionierenden Fassung erhalten.
