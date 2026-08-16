@@ -1,15 +1,21 @@
-# St. Remigius Diedesfeld – korrigierter Panorama-Rundgang
-
-Diese Fassung verwendet ausschließlich die echten Aufnahmen von St. Remigius.
+# St. Remigius Diedesfeld – Endfassung
 
 Navigation:
-- Portal → Kirchenschiff
-- Kirchenschiff: vorne nur „Chorraum“
-- Kirchenschiff nach hinten: „Empore“ oben an der Orgel, „Remigiusplatz“ unten am Ausgang
-- Chorraum: „Näher zum Hochaltar“; nach hinten Kirchenschiff, Empore und Remigiusplatz
-- Chorraum · Hochaltar: Kirchenschiff und Empore
-- Empore: Kirchenschiff
-- Remigiusplatz: Zurück in die Kirche
 
-Die Navigationspunkte werden als Fußspuren mit dauerhaft sichtbarer Beschriftung dargestellt.
-Die hochauflösende Multiresolution-Qualität von Kirchenschiff, Chorraum und Chorraum 2 bleibt erhalten.
+- Kirchenschiff, Blick nach vorne:
+  - nur „Chorraum“
+- Kirchenschiff, Blick nach hinten:
+  - „Remigiusplatz“ unten
+  - „Empore“ oben bei der Orgel
+- Chorraum, Blick zum Hochaltar:
+  - „Näher zum Hochaltar“
+- Chorraum, Gegenrichtung:
+  - „Kirchenschiff“
+- Empore:
+  - nur „Zurück ins Kirchenschiff“
+- Remigiusplatz:
+  - nur „Zurück in die Kirche“
+
+Empore und Remigiusplatz verwenden die neu hochgeladenen Originalpanoramen
+in 11904 × 5952 Pixeln. Die bestehenden Multiresolution-Kacheln für
+Kirchenschiff und Chorraum bleiben unverändert erhalten.
