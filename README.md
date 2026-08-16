@@ -1,14 +1,11 @@
-# Virtueller 360°-Rundgang – St. Remigius Diedesfeld
+# St. Remigius Diedesfeld – HQ-Web-Rundgang
 
-Neue Fassung mit dem aufgewerteten Portal als Startbild.
+Diese Fassung verwendet für die drei neu aufgenommenen Panoramen webtaugliche HQ-Dateien:
+- Kirchenschiff: 6144 × 3072
+- Chorraum: 6144 × 3072
+- Chorraum 2 / Hochaltar: 6144 × 3072
 
-Enthalten:
-- neues Portal-Startbild
-- Kirchenschiff als 360°-Panorama
-- heller Chorraum als 360°-Panorama
-- Empore als 360°-Panorama
-- Remigiusplatz als 360°-Panorama
-- funktionierende Navigation zwischen den Stationen
-- Rückweg vom Remigiusplatz in die Kirche
+Die Bilder wurden nicht künstlich nachgeschärft. Sie wurden aus den hochauflösenden
+11904 × 5952-Panoramen sauber auf eine WebGL-taugliche Größe skaliert.
 
-Die bisherigen 360°-Panoramen wurden nicht nachgeschärft oder hochskaliert.
+Navigation einschließlich „Näher zum Hochaltar“ ist enthalten.
